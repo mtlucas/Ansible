@@ -1,6 +1,6 @@
 ---
 - import_playbook: enable_epel.yaml
-- hosts: Linux
+- hosts: [dnf, yum]
   gather_facts: false
   become: true
   strategy: free

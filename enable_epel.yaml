@@ -1,5 +1,5 @@
 ---
-- hosts: Linux
+- hosts: [dnf, yum]
   gather_facts: True
   become: true
   strategy: free
