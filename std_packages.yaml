@@ -1,0 +1,20 @@
+---
+- import_playbook: enable_epel.yml
+- hosts: Linux
+  gather_facts: false
+  become: true
+  strategy: free
+  tasks:
+  # RHEL based OS version 8 stuff
+  - name: Packages major_version 8 and greater
+    when: ansible_facts['distribution_major_version'] >= "8"
+    package:
+      name: ['nmap-ncat', 'curl', 'rsync', 'sysstat', 'bind-utils', 'wget', 'bash-completion', 'mlocate', 'lsof', 'htop', 'yum-utils', 'ps_mem' ]
+      state: present
+
+  # RHEL based OS version 7 stuff
+  - name: Packages major_version 7
+    when: ansible_facts['distribution_major_version'] == "7"
+    package:
+      name: ['nmap-ncat', 'curl', 'rsync', 'sysstat', 'bind-utils', 'wget', 'bash-completion', 'mlocate', 'lsof', 'htop', 'sharutils', 'python2-psutil', 'yum-utils', 'ps_mem' ]
+      state: present
