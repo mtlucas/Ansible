@@ -5,11 +5,11 @@
   become: true
   serial: 1
   any_errors_fatal: yes
-  vars_prompt:
-    name: "confirmation"
-    prompt: "Are you sure you want to Update with reboots? Answer with 'YES'"
-    default: "NO"
-    private: no
+  # vars_prompt:
+  #   name: "confirmation"
+  #   prompt: "Are you sure you want to Update with reboots? Answer with 'YES'"
+  #   default: "NO"
+  #   private: no
   tasks:
 
   - name: Check Confirmation
