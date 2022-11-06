@@ -1,5 +1,5 @@
 ---
-- import_playbook: enable_epel.yml
+- import_playbook: enable_epel.yaml
 - hosts: Linux
   gather_facts: false
   become: true

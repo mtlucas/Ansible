@@ -1,6 +1,6 @@
 ---
-- import_playbook: std_packages.yml
-- hosts: Linux
+- import_playbook: std_packages.yaml
+- hosts: [dnf, yum]
   gather_facts: false
   become: true
   serial: 1
