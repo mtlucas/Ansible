@@ -1,0 +1,5 @@
+# Git ignore
+.decrypted*
+.private/
+.vscode/
+desktop.ini
