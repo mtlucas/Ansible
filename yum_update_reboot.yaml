@@ -3,6 +3,8 @@
 - hosts: [dnf, yum]
   gather_facts: false
   become: true
+  become_method: sudo
+  become_user: root
   serial: 1
   any_errors_fatal: yes
   # vars_prompt:
@@ -20,13 +22,13 @@
     dnf:
       name:  "*"
       state: latest
-    when: ansible_facts['os_family'] == 'RedHat' and ansible_facts ['distribution_major_version'] >= '8'
+    when: ansible_facts['distribution_file_variety'] == 'RedHat' and ansible_facts ['distribution_major_version'] >= '8'
 
   - name: Yum update the system
     yum:
       name: "*"
       state: latest
-    when: ansible_facts['os_family'] == 'RedHat' and ansible_facts ['distribution_major_version'] <= '7'
+    when: ansible_facts['distribution_file_variety'] == 'RedHat' and ansible_facts ['distribution_major_version'] <= '7'
 
   - name: Reboot required
     command: "/usr/bin/needs-restarting -r"
