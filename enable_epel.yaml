@@ -2,6 +2,8 @@
 - hosts: [dnf, yum]
   gather_facts: True
   become: true
+  become_method: sudo
+  become_user: root
   strategy: free
   tasks:
   - name: Enable EPEL Repository on CentOS 8 or greater
